@@ -60,10 +60,60 @@
       }
       return arr;
     }
-    console.log(fibonacciGenerater(20));
-    console.log(fibonacciGenerater(1));
-    console.log(fibonacciGenerater(2));
+    // console.log(fibonacciGenerater(20));
+    // console.log(fibonacciGenerater(1));
+    // console.log(fibonacciGenerater(2));
 
+
+    let animals = [
+      { id: 'a1', en: 'cat', cn: '貓', num: 30 },
+      { id: 'a2', en: 'dog', cn: '狗', num: 10 },
+      { id: 'a3', en: 'rabbit', cn: '兔', num: 5 },
+      { id: 'a4', en: 'bear', cn: '熊', num: 15 },
+      { id: 'a5', en: 'mouse', cn: '鼠', num: 20 }
+    ];
+
+    let newAnimals = animals.map((animal, i) => {
+      return { ...animal, size: 'small' }
+    })
+    console.log(newAnimals);
+
+    let bearIndex = animals.findIndex((animal, i) => {
+      return animal.cn === '熊';
+    })
+    console.log(bearIndex);
+    newAnimals[bearIndex].size = 'large';
+    console.log(newAnimals);
+
+    let largeBear = newAnimals.map((animal, i) => {
+      if (animal.cn === '熊') {
+        return { ...animal, size: 'large' }
+      } else {
+        return { ...animal }
+      }
+    })
+    console.log(largeBear);
+
+
+    let lessThanIndex2 = newAnimals.filter((animal, i) => {
+      return i <= 2;
+    })
+    console.log(lessThanIndex2);
+
+    let moreThanIndex2 = newAnimals.filter((animal, i) => {
+      return i > 2;
+    })
+    console.log(moreThanIndex2);
+
+    let pig = { id: 'a35', en: 'pig', cn: '豬', num: 3, size: 'medium' }
+    let newAnimalsArr = [...lessThanIndex2, pig, ...moreThanIndex2]
+    console.log(newAnimalsArr);
+
+    let resultAnimal = newAnimalsArr.find(animal =>
+      animal.num < 10
+    ).cn;
+
+    console.log(resultAnimal);
   </script>
 </body>
 
